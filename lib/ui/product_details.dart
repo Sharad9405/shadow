@@ -80,7 +80,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     options: CarouselOptions(
                         height: 200,
                         enlargeCenterPage: true,
-                        autoPlay: false,
+                        autoPlay: true,
                         aspectRatio: 16 / 9,
                         autoPlayCurve: Curves.fastOutSlowIn,
                         enableInfiniteScroll: true,
@@ -159,7 +159,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     options: CarouselOptions(
                         height: 200,
                         enlargeCenterPage: true,
-                        autoPlay: false,
+                        autoPlay: true,
                         aspectRatio: 16 / 9,
                         autoPlayCurve: Curves.fastOutSlowIn,
                         enableInfiniteScroll: true,
