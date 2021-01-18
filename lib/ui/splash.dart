@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shadow/config/app_theme.dart';
+import 'package:shadow/config/config.dart';
 import 'package:shadow/db/db_constant.dart';
 import 'package:shadow/db/db_helper.dart';
+import 'package:shadow/db/sharedPrefManager.dart';
 import 'package:shadow/model/model.dart';
 import 'dart:async';
 import 'package:shadow/ui/shadow_main.dart';
@@ -43,8 +45,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return new Timer(_duration, navigationPage);
   }
 
-  void navigationPage() {
-    Navigator.of(context).pushNamed('/signInOrSignUp');
+  void navigationPage() async {
+    bool isLogin = false;
+    isLogin = await SharedPrefManager().getPrefKey(key: PrefConstant.isLogin);
+    if(isLogin != null && isLogin == true){
+      print('Splash 1');
+      Navigator.pushNamedAndRemoveUntil(context, "/ShadowMain",  (route) => false);
+    }else{
+      print('Splash 2');
+      Navigator.of(context).pushNamed('/signInOrSignUp');
+    }
   }
 
   @override

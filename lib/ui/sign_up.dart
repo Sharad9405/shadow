@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shadow/config/pref_constant.dart';
+import 'package:shadow/db/sharedPrefManager.dart';
 import 'package:shadow/utils/utils.dart';
 
 class SignUp extends StatelessWidget {
@@ -87,6 +89,7 @@ class _FormBodyState extends State<SignUpFormBody> {
                           // Scaffold.of(context).showSnackBar(SnackBar(
                           //   content: Text('Valid input'),
                           // ));
+                          SharedPrefManager().setPrefKey(PrefConstant.isLogin, true);
                           Navigator.pushNamedAndRemoveUntil(context, "/ShadowMain",  (route) => false);
                         }
                       },

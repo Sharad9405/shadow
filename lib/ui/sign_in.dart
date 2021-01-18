@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shadow/config/config.dart';
+import 'package:shadow/db/sharedPrefManager.dart';
 import 'package:shadow/utils/utils.dart';
 
 class SignIn extends StatelessWidget {
@@ -75,6 +77,7 @@ class _FormBodyState extends State<FormBody> {
                       // ));
 
                       // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      SharedPrefManager().setPrefKey(PrefConstant.isLogin, true);
                       Navigator.pushNamedAndRemoveUntil(context, "/ShadowMain",  (route) => false);
                     }
                   },
