@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shadow/config/config.dart';
+import 'package:shadow/db/sharedPrefManager.dart';
+import 'package:shadow/ui/ui.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -168,7 +170,16 @@ void  _openSignOutDialog(BuildContext ctx){
             child: Text('Sign Out'),
             onPressed: (){
               // Navigator.of(ctx).pop();
-              Navigator.of(ctx, rootNavigator: true).pop("Discard");
+              SharedPrefManager().clear();
+              Navigator.of(ctx, rootNavigator: true).pop("Discard"); // close dialog
+              Navigator.pushAndRemoveUntil<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => SignInOrSignUp(),
+                ),
+                    (route) => false,//if you want to disable back feature set to false
+              );
+
             },
           ),
         ],

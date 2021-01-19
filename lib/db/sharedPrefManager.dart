@@ -62,6 +62,10 @@ class SharedPrefManager{
     return result;
   }
 
+  Future<bool> clear() async{
+    var result = (await SharedPreferences.getInstance()).clear();
+    return result;
+  }
 
 
 
